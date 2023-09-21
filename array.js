@@ -9,9 +9,21 @@ console.log(removeDuplicates([1, 2, 2, 3, 3, 4, 4, 5, 5, 6]));  // [1, 2, 3, 4, 
 //Chunk 1#
 const values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7];
 const chunkSize = 5;
-const lengthNew = Math.ceil(values.length / chunkSize); //to cover all values
-const chunks = Array.from({ length: lengthNew }).map(() => values.splice(0, chunkSize));
+const chunks = Array.from({ length: Math.ceil(values.length / chunkSize) })
+                    .map(() => values.splice(0, chunkSize));
 /*Result
 chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
 values = []
+*/
+
+//Chunk 2#
+const values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7];
+const chunkSize = 5;
+const chunks = new Array(Math.ceil(values.length / chunkSize));
+let index = 0, cindex = 0;
+while (index < values.length)
+    chunks[cindex++] = values.slice(index, (index += chunkSize))
+/*Result
+chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
+values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7]
 */

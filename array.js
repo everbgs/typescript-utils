@@ -19,6 +19,16 @@ values = []
 //Chunk 2#
 const values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7];
 const chunkSize = 5;
+const chunks = Array.from({ length: Math.ceil(values.length / chunkSize) })
+                    .map((_, index) => values.slice(index * chunkSize, chunkSize * (index + 1)));
+/*Result
+chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
+values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7]
+*/
+
+//Chunk 3#
+const values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7];
+const chunkSize = 5;
 const chunks = new Array(Math.ceil(values.length / chunkSize));
 let index = 0, cindex = 0;
 while (index < values.length)
@@ -27,3 +37,6 @@ while (index < values.length)
 chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
 values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7]
 */
+
+
+

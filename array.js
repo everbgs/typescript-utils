@@ -9,24 +9,22 @@ console.log(removeDuplicates([1, 2, 2, 3, 3, 4, 4, 5, 5, 6]));  // [1, 2, 3, 4, 
 //Chunk 1#
 const values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7];
 const chunkSize = 5;
+const removeArrayFrom = false;
 const chunks = Array.from({ length: Math.ceil(values.length / chunkSize) })
-                    .map(() => values.splice(0, chunkSize));
+                    .map((_, index) => removeArrayFrom ? 
+                                        values.splice(0, chunkSize) :
+                                        values.slice(index * chunkSize, chunkSize * (index + 1)));
 /*Result
+removeArrayFrom = true
 chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
 values = []
-*/
-
-//Chunk 2#
-const values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7];
-const chunkSize = 5;
-const chunks = Array.from({ length: Math.ceil(values.length / chunkSize) })
-                    .map((_, index) => values.slice(index * chunkSize, chunkSize * (index + 1)));
-/*Result
+-----------------------------------------------------------
+removeArrayFrom = false
 chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
 values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7]
 */
 
-//Chunk 3#
+//Chunk 2 by lodash chucnk#
 const values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7];
 const chunkSize = 5;
 const chunks = new Array(Math.ceil(values.length / chunkSize));
@@ -37,6 +35,3 @@ while (index < values.length)
 chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
 values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7]
 */
-
-
-

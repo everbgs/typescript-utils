@@ -15,12 +15,10 @@ const chunks = Array.from({ length: Math.ceil(values.length / chunkSize) })
                                         values.splice(0, chunkSize) :
                                         values.slice(index * chunkSize, chunkSize * (index + 1)));
 /*Result
-removeArrayFrom = true
 chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
+if removeArrayFrom = true
 values = []
------------------------------------------------------------
-removeArrayFrom = false
-chunks = [[3, 4, 5, 2, 6], [3, 2, 25, 5, 2], [45, 7]] 
+if removeArrayFrom = false
 values = [3, 4, 5, 2, 6, 3, 2, 25, 5, 2, 45, 7]
 */
 
